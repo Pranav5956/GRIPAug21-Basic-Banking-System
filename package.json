@@ -1,0 +1,32 @@
+{
+  "name": "basic-banking-system",
+  "version": "1.0.0",
+  "description": "A basic banking system, as part of GRIPAug21 tasks.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "setup": "npm install",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "GRIP",
+    "GRIPAug21",
+    "Basic Banking System",
+    "Web-Development",
+    "Internship"
+  ],
+  "author": "Pranav Balaji",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.5"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12"
+  }
+}
