@@ -40,7 +40,7 @@ router.get("/:transactionId", async (req, res) => {
   @method GET
   @param accountId: Account ID of the account to get all transactions of.
 */
-router.get("/:accountId", async (req, res) => {
+router.get("/account/:accountId", async (req, res) => {
   try {
     const accountId = req.params.accountId;
     const transactions = await Transaction.find({
@@ -77,17 +77,17 @@ router.post("/", async (req, res) => {
       return res
         .status(400)
         .json({ message: "Amount should be greater than 0!" });
-    if (amount < senderAccount.accountBalance)
+    if (amount > senderAccount.accountBalance)
       return res.status(400).json({
         message: `Insufficient account balance! Remaining balance: Rs.${senderAccount.accountBalance}`,
       });
 
     // Update account balances
     await Account.findByIdAndUpdate(senderId, {
-      accountBalance: { $inc: -amount },
+      $inc: { accountBalance: -amount },
     });
     await Account.findByIdAndUpdate(receiverId, {
-      accountBalance: { $inc: amount },
+      $inc: { accountBalance: amount },
     });
 
     // Store the transactions

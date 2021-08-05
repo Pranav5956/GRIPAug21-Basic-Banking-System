@@ -19,9 +19,9 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 
 // Middleware
 app.use(express.json());
-app.use("/accounts", accountsRoute);
-app.use("/transactions", transactionsRoute);
-app.use("*", (req, res) => res.status(404).send());
+app.use("/api/accounts", accountsRoute);
+app.use("/api/transactions", transactionsRoute);
+// app.use("*", (req, res) => res.status(404).send());
 
 // Starting the server
 app.listen(port, () => console.log("Server listening..."));

@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const accountSchema = mongoose.Schema({
-  userId: String,
   name: String,
   email: String,
+  accountType: String,
   accountBalance: Number,
 });
 
