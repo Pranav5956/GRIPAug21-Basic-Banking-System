@@ -5,6 +5,7 @@ import {
   NavLink,
   Navbar,
   NavbarBrand,
+  NavbarText,
   NavbarToggler,
 } from "reactstrap";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
@@ -37,19 +38,34 @@ const Navigationbar = () => {
               </NavLink>
             </NavItem>
           </Nav>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto d-flex align-items-center" navbar>
             <NavItem>
-              <NavLink href="/" className="socialLink">
+              <NavbarText className="mr-5">Made by Pranav Balaji</NavbarText>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                href="https://www.linkedin.com/in/pranav-balaji"
+                className="socialLink"
+                target="_blank"
+                rel="noopener noreferrer">
                 <FaLinkedin />
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/" className="socialLink">
+              <NavLink
+                href="https://github.com/Pranav5956/GRIPAug21-Basic-Banking-System"
+                className="socialLink"
+                target="_blank"
+                rel="noopener noreferrer">
                 <FaGithub />
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/" className="socialLink">
+              <NavLink
+                href="https://www.facebook.com/Pranav5956/"
+                className="socialLink"
+                target="_blank"
+                rel="noopener noreferrer">
                 <FaFacebook />
               </NavLink>
             </NavItem>
