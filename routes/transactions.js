@@ -44,8 +44,8 @@ router.get("/account/:accountId", async (req, res) => {
   try {
     const accountId = req.params.accountId;
     const transactions = await Transaction.find({
-      $or: [{ senderId: accountId }, { receiverId: accountId }],
-    });
+      $or: [{ sender: accountId }, { receiver: accountId }],
+    }).sort({ timestamp: -1 });
     res.json({ transactions });
   } catch (err) {
     res.status(500).json({ message: err.message });

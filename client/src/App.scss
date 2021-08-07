@@ -2,10 +2,28 @@ $button-color-primary: blue;
 
 .app {
   width: 100%;
-  min-height: 100vh;
-  background: url("https://www.desktopbackground.org/download/o/2014/04/26/753108_white-on-white-wallpapers-hd-wallpapers-pretty_1920x1080_h.jpg");
+  height: 100vh;
+  background: url("https://source.unsplash.com/GLf7bAwCdYg/1440x900");
   background-repeat: no-repeat;
   background-size: cover;
+  transition: all 0.2s ease-in-out;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 60vh;
+
+  & .loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transform: scale(2);
+  }
 }
 
 // Navbar
@@ -15,22 +33,77 @@ $button-color-primary: blue;
   margin-right: 0.5rem;
 }
 
+.back__button {
+  position: absolute;
+  top: 0.5rem;
+  left: 2rem;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.icon {
+  width: 400px;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  & + p {
+    text-align: center;
+    margin-top: 2.3rem;
+    color: black;
+    border-radius: 1em;
+    background: white;
+    font-size: 1.8rem;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+  }
+
+  &:hover + p {
+    letter-spacing: 0.2ch;
+  }
+}
+
 // Accounts Page
 
-.accounts {
+.accounts,
+.transfer,
+.home,
+.accountHistory {
   width: 100%;
   height: 100%;
-  min-height: 100vh;
-  background-color: rgb(224, 224, 224);
-  padding-top: 2rem;
+  position: relative;
+}
+
+.home__links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+  margin-top: 4rem;
 }
 
 .accounts__heading {
-  font-size: 48px;
-  text-transform: uppercase;
   text-align: center;
-  letter-spacing: 0.15ch;
-  margin-top: 0;
+  text-transform: uppercase;
+  margin: 1.6rem 0 0;
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
 .accountInfo__container {
@@ -39,81 +112,44 @@ $button-color-primary: blue;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 2rem 4rem;
+  margin: 2rem 4rem 0;
+  gap: 2rem;
 }
 
 .accountInfo {
-  padding: 2rem 1.25rem;
-  margin: 1.25rem;
-  min-width: 18%;
-  background-color: white;
-  border-radius: 25px;
-  animation: fadeIn 0.6s ease-in-out;
-  transition: transform 0.2s ease-in-out;
-}
+  width: 275px;
+  height: 240px;
+  min-height: 270px;
+  text-align: center;
+  animation: fadeIn 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-.accountInfo:hover {
-  transform: scale(1.05);
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  & > .card {
+    border-radius: 1rem;
+    height: 100% !important;
+  }
+
+  & .accountInfo__picture {
+    width: 80px !important;
+    height: 80px !important;
+    align-self: center;
+    margin-top: 0.75rem;
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-150%);
+    transform: translateY(-100%);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.accountInfo__name {
-  font-size: 28px;
-  margin: 0;
-}
-
-.accountInfo__userId {
-  color: gray;
-  font-style: italic;
-}
-
-.accountInfo__email {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.accountInfo__buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
-}
-
-.button {
-  text-decoration: none;
-  padding: 0.75rem 0;
-  width: 100%;
-  text-align: center;
-  border-radius: 25px;
-  border: 3px solid $button-color-primary;
-  transition: all 0.2s ease-in-out;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px white, 0 0 0 6px $button-color-primary;
-  color: white;
-  background: $button-color-primary;
-}
-
-.button:hover {
-  color: white;
-  background: $button-color-primary;
 }
 
 .accountsToHome {
@@ -191,4 +227,123 @@ $button-color-primary: blue;
   margin-top: 0;
   margin-right: 300px;
   margin-left: 300px;
+}
+
+// Account Information
+.accountHistory__information {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.account__information {
+  flex: 0.3;
+  height: 100%;
+  padding: 3rem;
+  padding-top: 1.3rem;
+
+  & .account__information-card {
+    height: 100%;
+
+    & .card {
+      border-radius: 25px;
+    }
+
+    & .account__information-avatar {
+      align-self: center;
+      margin: 1rem 0;
+      width: 120px !important;
+      height: 120px !important;
+    }
+
+    & .account__information-name {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    & .account__information-email {
+      text-align: center;
+    }
+
+    & .account__information-balance {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-top: 1.8rem;
+    }
+
+    & .account__information-links {
+      padding: 1rem;
+    }
+  }
+}
+
+.transaction__information {
+  flex: 0.7;
+  height: 100%;
+  margin: 3rem;
+  margin-top: 1.3rem;
+
+  & .transaction__information-card .card {
+    padding: 2rem;
+    border-radius: 25px;
+  }
+
+  .transaction__information-heading {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  & .transaction__information-list {
+    max-height: 58vh;
+    overflow-y: scroll;
+  }
+}
+
+.transaction__information-info {
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & span {
+      font-style: italic;
+    }
+
+    & small {
+      font-size: small;
+      font-weight: 500;
+    }
+  }
+
+  &--body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.125rem;
+
+    &Account {
+      font-weight: bold;
+      color: black;
+    }
+
+    &Remark {
+      font-weight: bold;
+      font-size: 1rem;
+
+      & span {
+        font-style: italic;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &--avatar {
+    width: 30px !important;
+    height: 30px !important;
+  }
 }

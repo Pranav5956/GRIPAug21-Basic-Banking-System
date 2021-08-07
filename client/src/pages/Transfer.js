@@ -15,12 +15,14 @@ import {
   InputGroup,
   InputGroupAddon,
   Spinner,
+  UncontrolledTooltip,
 } from "reactstrap";
 import { NavLink, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { getAccount, getAllAccounts } from "../requests/accounts";
 
 import Avatar from "react-avatar";
+import { FaArrowLeft } from "react-icons/fa";
 import { makeTransaction } from "../requests/transactions";
 
 const Transfer = () => {
@@ -137,7 +139,11 @@ const Transfer = () => {
   };
 
   return (
-    <div class="transfer">
+    <div className="transfer">
+      <NavLink className="back__button" to={`/${accountId ? "accounts" : ""}`}>
+        <FaArrowLeft className="mr-1" />
+        Back to {accountId ? " Accounts" : " Home"}
+      </NavLink>
       <h2 className="transfer__heading">Transactions made easier!</h2>
       <Form>
         <section className="accountStatus">
@@ -242,6 +248,7 @@ const Transfer = () => {
               <h5>Choose sender account</h5>
               <Input
                 type="select"
+                id="sender-selector"
                 disabled={!!accountId}
                 onChange={handleSenderSelect}
                 value={selectedSender || ""}>

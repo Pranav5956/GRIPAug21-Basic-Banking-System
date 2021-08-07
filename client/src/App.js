@@ -18,9 +18,9 @@ function App() {
       <Navbar />
       <SlideRoutes location={location} duration={400} timing="ease-in-out">
         <Route path="/" component={Home} exact />
-        <Route path="/accounts" component={Accounts} />
+        <Route path="/accounts" exact component={Accounts} />
         <Route path="/transfer/:accountId?" component={Transfer} />
-        <Route path="/transactions/:accountId" component={AccountHistory} />
+        <Route path="/accounts/:accountId" exact component={AccountHistory} />
       </SlideRoutes>
     </div>
   );
