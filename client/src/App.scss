@@ -2,7 +2,7 @@ $button-color-primary: blue;
 
 .app {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: url("https://source.unsplash.com/GLf7bAwCdYg/1440x900");
   background-repeat: no-repeat;
   background-size: cover;
